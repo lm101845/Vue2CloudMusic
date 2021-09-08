@@ -1,3 +1,9 @@
+<!--
+ * @Author: liming
+ * @Date: 2021-08-10 02:41:52
+ * @LastEditTime: 2021-09-08 19:33:59
+ * @FilePath: \Vue2CloudMusic\01-课程资料\01-课程源码\vue-music\src\components\tab\tab.vue
+-->
 <template>
   <div class="tab">
     <router-link tag="div" class="tab-item" to="/recommend">
