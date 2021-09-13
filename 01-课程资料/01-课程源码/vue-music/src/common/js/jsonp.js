@@ -1,3 +1,9 @@
+/*
+ * @Author: liming
+ * @Date: 2021-08-10 02:41:52
+ * @LastEditTime: 2021-09-13 23:41:58
+ * @FilePath: \Vue2CloudMusic\01-课程资料\01-课程源码\vue-music\src\common\js\jsonp.js
+ */
 import originJsonp from 'jsonp'
 
 export default function jsonp(url, data, option) {
