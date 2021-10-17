@@ -1,7 +1,7 @@
 /*
  * @Author: liming
  * @Date: 2021-08-10 03:43:56
- * @LastEditTime: 2021-09-08 19:04:23
+ * @LastEditTime: 2021-10-17 14:15:37
  * @FilePath: \Vue2CloudMusic\02-代码手敲\cloudmusic\build\webpack.base.conf.js
  */
 'use strict'
@@ -45,7 +45,9 @@ module.exports = {
             '@': resolve('src'),
             'common': resolve('src/common'),
             "components": resolve('src/components'),
-            "pages":resolve('src/pages/')
+          "pages": resolve('src/pages/'),
+          "api":resolve('src/api')
+            
         }
     },
     module: {

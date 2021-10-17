@@ -1,7 +1,7 @@
 <!--
  * @Author: liming
  * @Date: 2021-08-10 03:43:56
- * @LastEditTime: 2021-09-08 19:36:45
+ * @LastEditTime: 2021-10-17 14:08:43
  * @FilePath: \Vue2CloudMusic\02-代码手敲\cloudmusic\src\App.vue
 -->
 <template>
@@ -23,7 +23,7 @@ import Tab from 'components/tab/Tab'
 // 这里我写相对路径是可以的
 export default {
   name: 'App',
-  components: {MyHeader,Tab}
+  components: {MyHeader, Tab}
 }
 </script>
 

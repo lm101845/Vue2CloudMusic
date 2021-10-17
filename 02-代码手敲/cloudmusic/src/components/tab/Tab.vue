@@ -1,8 +1,9 @@
+/* eslint-disable indent */
 <!--
  * @Author: liming
  * @Date: 2021-09-08 19:23:47
- * @LastEditTime: 2021-09-08 21:45:53
- * @FilePath: \Vue2CloudMusic\02-代码手敲\cloudmusic\src\components\tab\tab.vue
+ * @LastEditTime: 2021-10-01 17:05:49
+ * @FilePath: \cloudmusic\src\components\tab\Tab.vue
 -->
 <template>
   <div class="tab">
@@ -27,9 +28,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'Tab'
-  }
+export default {
+  name: 'Tab'
+}
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
@@ -43,7 +44,7 @@
         // flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
         // 当 flex-basis 值为 0 % 时，项目尺寸会被认为是0，因此无论项目尺寸设置多少都用；
         // flex:1<==>flex-grow:1,flex-shrink:1,flex-basis:0%
-  .tab 
+  .tab
     display flex
     height 44px
     line-height 44px
@@ -55,10 +56,10 @@
        text-align center
        .tab-link
           padding-bottom 5px
-          color $color-text-l  
+          color $color-text-l
         &.router-link-active
          .tab-link
             color $color-theme
-            border-bottom 2px solid $color-theme 
+            border-bottom 2px solid $color-theme
         //当我们选择某个路由标签，这个标签的类名就被激活，名字就叫router-link-active
 </style>

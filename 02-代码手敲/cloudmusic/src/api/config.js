@@ -1,11 +1,10 @@
 /*
  * @Author: liming
- * @Date: 2021-08-10 02:41:52
- * @LastEditTime: 2021-10-17 13:49:58
- * @FilePath: \Vue2CloudMusic\01-课程资料\01-课程源码\vue-music\src\api\config.js
+ * @Date: 2021-10-01 17:07:35
+ * @LastEditTime: 2021-10-16 19:31:39
+ * @FilePath: \Vue2CloudMusic\02-代码手敲\cloudmusic\src\api\config.js
  */
 export const commonParams = {
-  // 这些都是一些公共参数
   g_tk: 1928093487,
   inCharset: 'utf-8',
   outCharset: 'utf-8',
