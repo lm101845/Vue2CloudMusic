@@ -1,42 +1,46 @@
 <!--
  * @Author: liming
  * @Date: 2021-09-08 18:52:09
- * @LastEditTime: 2021-10-23 19:27:19
+ * @LastEditTime: 2021-11-06 16:35:49
  * @FilePath: \Vue2CloudMusic\02-代码手敲\cloudmusic\src\pages\singer\Singer.vue
 -->
 <template class="singer">
-  <div>歌手页面</div>
+  <!-- <div>歌手页面</div> -->
+  <list-view :data="singers"></list-view>
 </template>
 
 <script>
 // import {getSingerList} from '../../api/singer'
-import { getSingerList } from '@/api/singer'
-import { ERR_OK } from '@/api/config'
-import Singer from '@/common/js/singer'
-const HOT_NAME = '热门'
-const HOT_SINGER_LEN = 10
+import { getSingerList } from "@/api/singer";
+import { ERR_OK } from "@/api/config";
+import Singer from "@/common/js/singer";
+import listView from "@/base/listView/listView";
+const HOT_NAME = "热门";
+const HOT_SINGER_LEN = 10;
 // ERR_OK是一个常量，表示0
 export default {
-  name: 'Singer',
+  name: "Singer",
   data() {
     return {
-      singers: []
-    }
+      singers: [],
+    };
   },
   created() {
-    this._getSingderList()
+    this._getSingderList();
   },
   methods: {
     _getSingderList() {
       // 在这里调用api里面的getSingderList这个方法
       getSingerList().then((res) => {
         if (res.code === ERR_OK) {
-          this.singers = res.data.list
-          console.log(this.singers, '输出this.singers')
-          console.log('=================')
-          console.log(this._normalizeSinger(this.singers)) // 这个是调用一下函数
+          // this.singers = res.data.list
+          this.singers = this._normalizeSinger(res.data.list);
+
+          console.log(this.singers, "输出this.singers");
+          console.log(typeof this.singers, "=================");
+          console.log(this._normalizeSinger(this.singers)); // 这个是调用一下函数
         }
-      })
+      });
     },
     _normalizeSinger(list) {
       // 首先遍历list
@@ -44,9 +48,9 @@ export default {
       let map = {
         hot: {
           title: HOT_NAME,
-          items: []
-        }
-      }
+          items: [],
+        },
+      };
       list.forEach((item, index) => {
         if (index < HOT_SINGER_LEN) {
           // 在10条数据之内我们都给它添加到items里面
@@ -60,51 +64,56 @@ export default {
           map.hot.items.push(
             new Singer({
               name: item.Fsinger_name,
-              id: item.Fsinger_mid
+              id: item.Fsinger_mid,
             })
-          )
+          );
         }
-        const key = item.Findex
+        const key = item.Findex;
+        // console.log(key, "输出key");
         // Findex为人名首字母【A-Z】
         if (!map[key]) {
+          // console.log(map[key], "输出map[key]-初始");
           // 如果对象map没有key属性的话，给map赋予key属性，并且值为一个对象
           map[key] = {
             title: key,
-            items: []
-          }
+            items: [],
+          };
         }
         map[key].items.push(
           new Singer({
             name: item.Fsinger_name,
-            id: item.Fsinger_mid
+            id: item.Fsinger_mid,
           })
-        )
-      })
-      console.log(map, 'map ===============')
+        );
+      });
+      // console.log(map, "map ===============");
       // 为了得到有序列表，我们需要处理map
       // 它有2个部分，一个是热门部分，一个是按顺序排列的部分
-      let hot = []
-      let ret = []
+      let hot = [];
+      let ret = [];
       for (let key in map) {
-        let val = map[key]
+        let val = map[key];
         if (val.title.match(/[a-zA-Z]/)) {
-          ret.push(val)
+          ret.push(val);
         } else if (val.title === HOT_NAME) {
-          hot.push(val)
+          hot.push(val);
           // 通过对map的遍历，我们就得到了2块的数组
         }
       }
       // 对数组进行排序
       ret.sort((a, b) => {
-        return a.title.charCodeAt(0) - b.title.charCodeAt(0)
+        return a.title.charCodeAt(0) - b.title.charCodeAt(0);
         // 使用 charCodeAt() 方法可以查看指定码元的字符编码。这个方法返回指定索引位置的码元值，索引以整数指定。
-      })
-      
-      return hot.concat(ret)
+      });
+
+      return hot.concat(ret);
       // concat() ，用于将一个或多个字符串拼接成一个新字符串。
-    }
-  }
-}
+    },
+  },
+  components: {
+    listView,
+  },
+};
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
